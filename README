@@ -1,0 +1,24 @@
+NOTE:
+1. This is a sample coontainer runtime to demonstrate the creation of namespaces and cgroups for every container launched through container runtimes likes runC which are used by container managers like Docker.
+2. The image for the sample container is harcoded.
+3. The parameters that can be specified by the user are:
+--hostname - Hostname of the new container
+--ip_addr - IP address of the new container
+--mem - Memory to be assigned to the new container
+--cpu - CPU to be assigned to the new container
+--root_path - the path which can be used as the new root path for the new container.
+
+4. Once started the process forks a new container process (a bash script at the location /bin/bash in the new root path) with the appropriate namespaces and control groups.
+
+5. The user can optionally run /home/loop to test the restriction on cpu usage and /home/mem to test the memory limit restriction enforcement.
+
+6. The python script needs unshare and cgroups modules to be installed. Please use any python module installation manager like pip to install these if not already present.
+
+7. Make sure to run the script with sudo privileges.
+
+NOTES on the cgroups and namespaces:
+1. Croups are tracked using files in the /sys/fs/cgroups directory.
+2. Namespaces are fields set in the task struct for each process.
+
+By default, all child processes inherit their parent's cgroups and namespaces unless unshared using the unshared command to isolate it by creating new namespaces while creating subdirectories in the /sys.fs/cgroups directory helps specify different resource limits.
+
