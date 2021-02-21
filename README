@@ -16,6 +16,9 @@ NOTE:
 
 7. Make sure to run the script with sudo privileges.
 
+8. Github doesn't allow files bigger than 25MB, so please find the tarred mini ubuntu file at https://drive.google.com/file/d/1VFsymPPE0CzfY89bxmH9Wida_kDZlNLi/view?usp=sharing
+or better experiment with your own image.
+
 NOTES on the cgroups and namespaces:
 1. Croups are tracked using files in the /sys/fs/cgroups directory.
 2. Namespaces are fields set in the task struct for each process.
